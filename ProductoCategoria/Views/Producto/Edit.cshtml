@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+
+
+}
+
+<h1>Editar</h1>
+
+<div class="form-group">
+    <form method="post" action="/Producto/Edit">
+
+        <input type="hidden" name="IdProducto" value="@ViewBag.Id" />
+
+        <div>
+            <label>Nombre: </label>
+            <input name="Nombre" type="text" value="@ViewBag.Nombre"  class="form-control"/>
+            @Html.ValidationMessage("Nombre")
+        </div>
+       
+        <div>
+            <label>Cateogiras: </label>
+            <select name="IdCategoria" class="form-control">
+
+                @foreach (var i in ViewBag.Categorias)
+                {
+
+                    <option value="@i.IdCategoria">@i.Nombre</option>
+
+
+                }
+            </select>
+        </div>
+        <br />
+
+        <div>
+            <label>Proveedor</label>
+            <input name="Proveedor" type="text" value="@ViewBag.Provedor" class="form-control"/>
+            @Html.ValidationMessage("Proveedor")
+        </div>
+
+        <div>
+            <label>Costo</label>
+            <input name="Costo" type="number" value="@ViewBag.Costo" class="form-control" />
+            @Html.ValidationMessage("Costo")
+        </div>
+
+        <br />
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/Producto/Index" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>

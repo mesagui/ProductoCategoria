@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+
+
+    List<Product> producto = ((List<Product>)Model);
+}
+
+<h1>Principal</h1>
+
+
+<a class="btn btn-success" href="/Producto/Create" >Agregar</a>
+<br />
+<br />
+
+<div >
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Proveedor</th>
+                <th>Costo</th>
+                <th>Opciones</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.Nombre</td>
+                    <td>@i.Categoria.Nombre</td>
+                    <td>@i.Proveedor</td>
+                    <td>@i.Costo</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Producto/Edit?id=@i.IdProducto">Editar</a>
+                        <a class="btn btn-danger" href="/Producto/Delete?id=@i.IdProducto">Eliminar</a>
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
